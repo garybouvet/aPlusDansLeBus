@@ -150,7 +150,7 @@ elif selected == 'V3':
         """,
         unsafe_allow_html=True,
     )
-    st.markdown("<h1 style='color: black;'>Selectionnez une respiration VCube :</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: black;'>Selectionnez une respiration V3 :</h1>", unsafe_allow_html=True)
     # Date Selectbox
     date_format_mapping = pd.Series(data.formatted_date.values,index=data.mdate.dt.date).to_dict()
     unique_dates = sorted(date_format_mapping.items())[1:]  # Skip the first date
@@ -204,7 +204,7 @@ elif selected == 'V3':
     # Display the dynamic map using folium_static
     folium_static(m, width=945, height=450)
 
-    st.markdown("<h1 style='text-align: center; color: black;'>DashBoard VCube</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: black;'>DashBoard V3</h1>", unsafe_allow_html=True)
     st.markdown("""
         <div style="width: 1000px; height: 650px; overflow: hidden; position: relative;">
             <iframe 
