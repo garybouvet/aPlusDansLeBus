@@ -32,7 +32,7 @@ logo = Image.open('./LOGO_TBM.png')
 
 with st.sidebar:
     st.image(logo)
-    selected = option_menu (None, ['HOME','V3','BUS/TRAM/BAT3'], 
+    selected = option_menu (None, ['HOME','V3','BUS • TRAM • BAT3'], 
                             icons= ['🚲', '🚌🚃⛴️'],
                             menu_icon="🚲🚌🚃⛴️")
 
@@ -219,8 +219,8 @@ elif selected == 'V3':
         </div>
     """, unsafe_allow_html=True)
 
-elif selected == 'BUS/TRAM/BAT3':
-    st.markdown("<h1 style='color: black;'>Réseau TRAM • BUS • BATCUBE</h1>", unsafe_allow_html=True)
+elif selected == 'BUS • TRAM • BAT3':
+    st.markdown("<h1 style='color: black;'>Réseau TRAM • BUS • BAT3</h1>", unsafe_allow_html=True)
     st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
     vehicle_type = st.radio('',['ALL', '🚃TRAM', '🚌BUS', '⛴️BATEAU'])
@@ -286,7 +286,7 @@ elif selected == 'BUS/TRAM/BAT3':
     st.markdown("""
         <div style="width: 1000px; height: 1200px; overflow: hidden; position: relative;">
             <iframe 
-                title="TRAM/BUS/BATEAU" 
+                title="TRAM • BUS • BATEAU" 
                 width="945" 
                 height="2000" 
                 src="https://app.powerbi.com/reportEmbed?reportId=7f601950-66d2-4060-840b-21740784a6dc&autoAuth=true&ctid=5892e2db-e39d-4cc1-a179-dc66550efc30" 
