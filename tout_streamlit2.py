@@ -56,7 +56,7 @@ if selected == 'HOME':
 
 elif selected == 'V3':
     
-    st.markdown("<h1 style='color: black;'>Respiration VCube (14 jours)</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: black;'>Respiration V3 (14 jours)</h1>", unsafe_allow_html=True)
     # Code for first page goes here
     video_file = open('./output_great_accelere.mp4', 'rb')
     video_bytes = video_file.read()
@@ -238,7 +238,7 @@ elif selected == 'BUS/TRAM/BAT3':
 
     emoji_dict = {'TRAM': u'\U0001F68B', 'BUS': u'\U0001F68C', 'BATEAU': u'\U0001F6A2'}
 
-    n = 5000
+    n = 20000
 
     for index, row in gdf.iterrows():
         if show_retard and row['retard'] > 100:
@@ -282,7 +282,7 @@ elif selected == 'BUS/TRAM/BAT3':
             folium.PolyLine(line_coords, color=line_color, weight=2.5, opacity=1).add_child(folium.Popup(popup_text)).add_to(m)
     
     folium_static(m, width=945, height=450)
-    st.markdown("<h1 style='text-align: center; color: black;'>DashBoard TRAM • BUS • BATCube</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: black;'>DashBoard TRAM • BUS • BAT3</h1>", unsafe_allow_html=True)
     st.markdown("""
         <div style="width: 1000px; height: 1200px; overflow: hidden; position: relative;">
             <iframe 
