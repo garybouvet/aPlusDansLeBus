@@ -54,7 +54,7 @@ Fiona==1.9.4.post1
 fitz==0.0.1.dev2
 Flask==2.2.5
 Flask-RESTful==0.3.10
-folium==0.14.1
+folium==0.14.1.dev59+g087d73b
 fonttools==4.40.0
 fqdn==1.5.1
 future==0.18.3
@@ -124,6 +124,7 @@ pandas==2.0.2
 pandocfilters==1.5.0
 parso==0.8.3
 pathlib==1.0.1
+pdfminer.six==20221105
 pdfplumber==0.9.0
 pexpect==4.8.0
 pickleshare==0.7.5
