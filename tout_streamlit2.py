@@ -24,13 +24,13 @@ except locale.Error:
 
 @st.cache_data
 def load_data_and_create_geodataframe():
-    df = pd.read_csv('/Users/garybouvet/Desktop/Streamlit_projet_3/gdfbustrambat.csv')
+    df = pd.read_csv('./gdfbustrambat.csv')
     gdf = gpd.GeoDataFrame(df, geometry=gpd.GeoSeries.from_wkt(df['geometry']))
     return gdf
 
 gdf = load_data_and_create_geodataframe()
 
-logo = Image.open('/Users/garybouvet/Desktop/Streamlit_projet_3/LOGO_TBM.png')
+logo = Image.open('./LOGO_TBM.png')
 
 
 with st.sidebar:
@@ -41,7 +41,7 @@ with st.sidebar:
 
 if selected == 'HOME':
     # Load the image
-    image = Image.open('/Users/garybouvet/Desktop/Streamlit_projet_3/Logo_aPlusDansLeBus.png')
+    image = Image.open('./Logo_aPlusDansLeBus.png')
 
     # Create columns
     col1, col2, col3 = st.columns([1,6,1])
@@ -61,7 +61,7 @@ elif selected == 'V3':
     
     st.markdown("<h1 style='color: black;'>Respiration VCube (14 jours)</h1>", unsafe_allow_html=True)
     # Code for first page goes here
-    video_file = open('/Users/garybouvet/Desktop/Streamlit_projet_3/output_great_accelere.mp4', 'rb')
+    video_file = open('./output_great_accelere.mp4', 'rb')
     video_bytes = video_file.read()
 
     st.video(video_bytes)
@@ -69,7 +69,7 @@ elif selected == 'V3':
     @st.cache_data
     def load_data():
         # Load the data from the CSV file.
-        data = pd.read_csv("/Users/garybouvet/Desktop/PROJET_DATA_3/Gary_all_data/station_vCube_10.csv")
+        data = pd.read_csv("./station_vCube_10.csv")
 
         # Convert 'mdate' to datetime.
         data['mdate'] = pd.to_datetime(data['mdate'])  # Convert to datetime
