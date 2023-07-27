@@ -16,7 +16,11 @@ st.set_page_config(
     layout="wide",
 )
 
-locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+try:
+    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+except locale.Error:
+    print("Locale not found. Default (English) will be used.")
+
 
 @st.cache_data
 def load_data_and_create_geodataframe():
