@@ -9,17 +9,14 @@ import seaborn as sns
 import geopandas as gpd
 import locale
 from datetime import datetime, timedelta
+from babel.dates import format_date
+
 
 st.set_page_config(
     page_title = "TBM : un diaporama du réseau",
     page_icon = "🚲🚌🚃⛴️",
     layout="wide",
 )
-
-try:
-    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
-except locale.Error:
-    print("Locale not found. Default (English) will be used.")
 
 
 @st.cache_data
@@ -65,37 +62,22 @@ elif selected == 'V3':
     video_bytes = video_file.read()
 
     st.video(video_bytes)
+@st.cache_data
+def load_data():
+    # Load the data from the CSV file.
+    data = pd.read_csv("./station_vCube_10.csv")
 
-    @st.cache_data
-    def load_data():
-        # Load the data from the CSV file.
-        data = pd.read_csv("./station_vCube_10.csv")
+    # Convert 'mdate' to datetime.
+    data['mdate'] = pd.to_datetime(data['mdate'])  # Convert to datetime
 
-        # Convert 'mdate' to datetime.
-        data['mdate'] = pd.to_datetime(data['mdate'])  # Convert to datetime
+    # Extract time in the format HH:mm
+    data['time'] = data['mdate'].dt.strftime('%H:%M')
 
-        # Extract date and time in the format HH:mm
-        data['formatted_date'] = data['mdate'].dt.strftime('%A %d %B %Y') # This will give day in English
-        data['time'] = data['mdate'].dt.strftime('%H:%M')
+    # Format date in French using Babel
+    data['formatted_date'] = data['mdate'].apply(lambda x: format_date(x, 'EEEE d MMMM y', locale='fr'))
 
-        # Function to convert English date to French
-        def english_to_french_date(date_string):
-            english_months = ['January', 'February', 'March', 'April', 'May', 'June',
-                              'July', 'August', 'September', 'October', 'November', 'December']
-            french_months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-                             'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
-            english_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-            french_days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
-            for eng_month, fr_month in zip(english_months, french_months):
-                date_string = date_string.replace(eng_month, fr_month)
-            for eng_day, fr_day in zip(english_days, french_days):
-                date_string = date_string.replace(eng_day, fr_day)
-            return date_string
+    return data
 
-        # Apply the function to the 'formatted_date' column
-        data['formatted_date'] = data['formatted_date'].apply(english_to_french_date)
-
-        return data
 
     
     #@st.cache_data
@@ -156,8 +138,6 @@ elif selected == 'V3':
     # Load data
     data = load_data()
 
-    # Set locale to French
-    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
 
     # Custom styles, including the custom font
     st.markdown(
