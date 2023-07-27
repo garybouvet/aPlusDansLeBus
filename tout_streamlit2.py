@@ -62,21 +62,21 @@ elif selected == 'V3':
     video_bytes = video_file.read()
 
     st.video(video_bytes)
-@st.cache_data
-def load_data():
-    # Load the data from the CSV file.
-    data = pd.read_csv("./station_vCube_10.csv")
-
-    # Convert 'mdate' to datetime.
-    data['mdate'] = pd.to_datetime(data['mdate'])  # Convert to datetime
-
-    # Extract time in the format HH:mm
-    data['time'] = data['mdate'].dt.strftime('%H:%M')
-
-    # Format date in French using Babel
-    data['formatted_date'] = data['mdate'].apply(lambda x: format_date(x, 'EEEE d MMMM y', locale='fr'))
-
-    return data
+    @st.cache_data
+    def load_data():
+        # Load the data from the CSV file.
+        data = pd.read_csv("./station_vCube_10.csv")
+    
+        # Convert 'mdate' to datetime.
+        data['mdate'] = pd.to_datetime(data['mdate'])  # Convert to datetime
+    
+        # Extract time in the format HH:mm
+        data['time'] = data['mdate'].dt.strftime('%H:%M')
+    
+        # Format date in French using Babel
+        data['formatted_date'] = data['mdate'].apply(lambda x: format_date(x, 'EEEE d MMMM y', locale='fr'))
+    
+        return data
 
 
     
