@@ -230,9 +230,6 @@ elif selected == 'BUS/TRAM/BAT3':
     if vehicle_type != 'ALL':
         gdf = gdf[gdf['vehicule'] == vehicle_dict[vehicle_type]]
 
-    if show_retard:
-        gdf = gdf[gdf['retard'] > 100]
-
     m = folium.Map(location=[44.841424, -0.570334], tiles='Stamen Toner', zoom_start=13)
 
     lines = ['Tram B','Tram C','Tram A','Tram D','Lianes 1', 'Lianes 2', 'Lianes 3', 'Lianes 4', 'Lianes 5', 'Lianes 9', 'Lianes 10', 'Lianes 11', 'Lianes 15', 'Lianes 16', 'BAT3']
