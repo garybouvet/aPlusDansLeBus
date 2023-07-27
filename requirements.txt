@@ -54,7 +54,7 @@ Fiona==1.9.4.post1
 fitz==0.0.1.dev2
 Flask==2.2.5
 Flask-RESTful==0.3.10
-folium==0.14.1.dev59+g087d73b
+folium==0.14.0
 fonttools==4.40.0
 fqdn==1.5.1
 future==0.18.3
