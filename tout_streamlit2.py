@@ -58,7 +58,7 @@ elif selected == 'V3':
     
     st.markdown("<h1 style='color: black;'>Respiration V3 (14 jours)</h1>", unsafe_allow_html=True)
     # Code for first page goes here
-    video_file = open('./output_great_accelere.mp4', 'rb')
+    video_file = open('./output.mp4', 'rb')
     video_bytes = video_file.read()
 
     st.video(video_bytes)
