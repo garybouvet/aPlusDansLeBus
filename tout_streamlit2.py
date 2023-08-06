@@ -10,6 +10,7 @@ import geopandas as gpd
 import locale
 from datetime import datetime, timedelta
 from babel.dates import format_date
+from shapely.geometry import LineString
 
 
 st.set_page_config(
@@ -18,6 +19,14 @@ st.set_page_config(
     layout="wide",
 )
 
+def convert_to_linestring(multilinestring):
+    if multilinestring.geom_type == 'LineString':
+        return multilinestring
+    elif multilinestring.geom_type == 'MultiLineString':
+        # Here we are just taking the first LineString from the MultiLineString.
+        # If your MultiLineStrings are made up of multiple distinct lines,
+        # you might want to adjust this to better suit your needs.
+        return multilinestring.geoms[0]
 
 @st.cache_data
 def load_data_and_create_geodataframe():
@@ -26,6 +35,9 @@ def load_data_and_create_geodataframe():
     return gdf
 
 gdf = load_data_and_create_geodataframe()
+
+# Apply the function to the 'geometry' column
+gdf['geometry'] = gdf['geometry'].apply(convert_to_linestring)
 
 logo = Image.open('./LOGO_TBM.png')
 
@@ -237,6 +249,7 @@ elif selected == 'BUS • TRAM • BAT3':
     color_dict = dict(zip(lines, palette))
 
     emoji_dict = {'TRAM': u'\U0001F68B', 'BUS': u'\U0001F68C', 'BATEAU': u'\U0001F6A2'}
+
 
     n = 20000
 
