@@ -31,7 +31,7 @@ st.set_page_config(
 # Defining the tile URL for the map
 new_tile = "https://api.maptiler.com/maps/openstreetmap/{z}/{x}/{y}.jpg?key=f3oINQCFQ6bcHd6xbwMB"
 # Loading the logo image from file
-logo = Image.open('./LOGO_TBM.png')
+logo = Image.open('./Logo2_aPlusDansLeBus.png')
 
 #-----------------------------------------------------#
 #                     Functions                       #
